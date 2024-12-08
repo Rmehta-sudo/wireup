@@ -64,8 +64,6 @@ def Inject(  # noqa: N802
     return res
 
 
-
-
 def wire(
     *,
     param: str | None = None,
