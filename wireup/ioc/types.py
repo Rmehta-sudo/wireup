@@ -30,30 +30,6 @@ class TemplatedString:
 
     value: str
 
-# ## remove b/w ka , just testing
-class trial:
-    def __init__(self,a):
-        self.attr = a
-    
-b = trial(5)
-b.c = trial(6)
-f = f"{b.c.attr}"
-print(f)
-a = TemplatedString(f)
-print(a.value)
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from util import create_container
-container = create_container(
-    parameters={
-        "mailer": {"from": {"name": "foo", "email": "foo@example.com"}}
-    },
-)
-
-print(container.params.get_all())
-
-# ## till here testing
 
 ParameterReference = Union[str, TemplatedString]
 

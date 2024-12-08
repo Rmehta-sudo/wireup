@@ -62,11 +62,9 @@ def Inject(  # noqa: N802
         return importlib.import_module("fastapi").Depends(_inner)  # type: ignore[no-any-return]
 
     return res
-# testing
 
-# foo = 
-test= Inject(expr=f"{foo.bar.baz}")
-print(test.param.value)
+
+
 
 def wire(
     *,
@@ -191,4 +189,3 @@ __all__ = [
     "Wire",
     "Inject",
 ]
-
