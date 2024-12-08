@@ -17,6 +17,10 @@ if TYPE_CHECKING:
     from collections.abc import Callable
     from types import ModuleType
 
+class DotDict(dict):
+    """Dictionary with dot notation access."""
+    def __getattr__(self, attr):
+        return self.get(attr)
 
 def create_container(
     *, service_modules: list[ModuleType] | None = None, parameters: dict[str, Any] | None = None
@@ -24,7 +28,7 @@ def create_container(
     """Create a container with the given parameters and register all services found in service modules."""
     bag = ParameterBag()
     if parameters:
-        bag.update(parameters)
+        bag.update(DotDict(parameters))
     container = DependencyContainer(bag)
     if service_modules:
         _register_services(container, service_modules)
